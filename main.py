@@ -1,9 +1,23 @@
 #!/usr/bin/env python3
-from pathlib import Path
-import runpy, tempfile, sys
-base = Path(__file__).parent
-code = (base / "bot_part1.py").read_text() + (base / "bot_part2.py").read_text()
-tmp = Path(tempfile.gettempdir()) / "axion_osint_bot_run.py"
-tmp.write_text(code)
-sys.argv[0] = str(tmp)
-runpy.run_path(str(tmp), run_name="__main__")
+"""
+Axion OSINT Telegram Bot
+Repo: https://github.com/poebduz006-a11y/axion-osint-telegram-bot
+
+On GitHub (phone):
+1. Open this repo
+2. Add file → Upload files
+3. Upload axion-osint-telegram-bot-READY.py renamed to bot.py
+4. Edit main.py to:
+
+import runpy
+runpy.run_path('bot.py', run_name='__main__')
+
+Or replace this entire main.py with the READY file content.
+
+Render: Background Worker, start command: python main.py
+Env: TELEGRAM_TOKEN
+"""
+import os, sys
+print('Upload bot.py (full READY file) then set main to run it.')
+print('TELEGRAM_TOKEN set:', bool(os.environ.get('TELEGRAM_TOKEN')))
+sys.exit(1)
